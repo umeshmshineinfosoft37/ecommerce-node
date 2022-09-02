@@ -12,7 +12,10 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 mongoose.connect(mongoConfig,{ useNewUrlParser: true, useCreateIndex: true, },function(error){
-  if(error) throw error
+  if(error) {
+    console.log("err===>",error)
+    throw error
+  }
     console.log(`connect mongodb success`);
 });
 
