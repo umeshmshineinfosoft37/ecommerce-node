@@ -11,7 +11,9 @@ const CartClass = require('../modules/Cart')
 const paypal_config = require('../configs/paypal-config')
 const paypal = require('paypal-rest-sdk')
 
-
+router.get('/', function (req, res, next) {
+  res.json({ message: "server is working" })
+})
 //GET /products
 router.get('/products', function (req, res, next) {
   const { query, order } = categorizeQueryString(req.query)
