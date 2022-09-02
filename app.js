@@ -5,13 +5,21 @@ var bodyParser = require('body-parser')
 var logger = require('morgan');
 var express = require('express');
 var mongoose = require('mongoose');
+const MongoClient = require("mongodb")
 var cors = require('cors')
 var expressValidator  = require('express-validator');//req.checkbody()
 const mongoConfig = require('./configs/mongo-config')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-mongoose.connect(mongoConfig,{ useNewUrlParser: true, useCreateIndex: true, },function(error){
+// mongoose.connect(mongoConfig,function(error){
+//   if(error) {
+//     console.log("err===>",error)
+//     throw error
+//   }
+//     console.log(`connect mongodb success`);
+// });
+MongoClient.connect(mongoConfig,function(error){
   if(error) {
     console.log("err===>",error)
     throw error
